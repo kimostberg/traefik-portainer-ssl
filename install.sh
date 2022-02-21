@@ -7,7 +7,7 @@ if [ ! -d $DOCKERDIR ]; then
 fi
 cd /docker
 read -p 'Username: ' uservar
-read -sp 'Password: ' passvar
+read -p 'Password: ' passvar
 read -p 'Email: ' email
 read -p 'Domain: ' domain
 read -p 'CloudFlare DNS API TOKEN: ' cftoken 
