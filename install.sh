@@ -14,7 +14,6 @@ read -p 'CloudFlare DNS API TOKEN: ' cftoken
 sudo apt update
 sudo apt install apache2-utils git -y
 basicauth=`htpasswd -nb $uservar $passvar`
-git clone https://github.com/kimostberg/traefik-portainer-ssl
 sed -i -e 's/local.example.com/$domain/g' /docker/docker-compose.yml
 sed -i -e 's/user@example.com/$email/g' /docker/docker-compose.yml
 sed -i -e 's/YOU_API_TOKEN/$cftoken/g' /docker/docker-compose.yml
