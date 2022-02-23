@@ -14,8 +14,7 @@ http:
         - "https"                                                                                                                     
       rule: "Host(`shell.local.example.com`)"                                                                                        
       middlewares:                                                                                                                    
-        - default-headers                                                                                                             
-
+        - default-headers
       tls: {}                                                                                                                         
       service: shell                                                                                                                  
                                                                                                                                       
