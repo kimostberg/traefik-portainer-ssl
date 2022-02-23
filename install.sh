@@ -23,8 +23,12 @@ if [ ! -d $DOCKERDIR ]; then
     mkdir -p $DOCKERDIR
 fi
 cd /docker
+echo "Traefik login username"
 read -p 'Username: ' uservar
+echo "Traefik login password. Alphanumeric. No special characters"
 read -p 'Password: ' passvar
+clear
+echo "Your CloudFlare email account"
 read -p 'Email: ' email
 read -p 'Domain: ' domain
 read -p 'CloudFlare API KEY: ' cftoken
