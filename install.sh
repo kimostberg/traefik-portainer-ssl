@@ -47,16 +47,18 @@ if [ ! -f $DOCKERDIR/traefik/data/traefik.yml ]; then
     sudo wget https://raw.githubusercontent.com/kimostberg/traefik-portainer-ssl/main/traefik/data/traefik.yml -P $DOCKERDIR/traefik/data
 fi
 
-sed -i -e "s/local.example.com/$domain/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
-sed -i -e "s/user@example.com/$email/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
-sed -i -e "s/YOU_API_KEY/$cftoken/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
-sed -i -e "s/BASICAUTH/$basicauth/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
-sed -i -e "s/user@example.com/$email/g" $DOCKERDIR/traefik-portainer/traefik/traefik.yml
-touch $DOCKERDIR/traefik/data/acme.json
-chmod 600 $$DOCKERDIR/traefik/data/acme.json
 if [ ! -f $DOCKERDIR/traefik/data/config.yml ]; then
     sudo wget https://raw.githubusercontent.com/kimostberg/traefik-portainer-ssl/main/traefik/data/config.yml -P $DOCKERDIR/traefik/data
 fi
+
+sed -i -e "s/local.example.com/$domain/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
+sed -i -e "s/local.example.com/$domain/g" $DOCKERDIR/traefik/data/config.yml
+sed -i -e "s/user@example.com/$email/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
+sed -i -e "s/user@example.com/$email/g" $DOCKERDIR/traefik/data/traefik.yml
+sed -i -e "s/YOU_API_KEY/$cftoken/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
+sed -i -e "s/BASICAUTH/$basicauth/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
+touch $DOCKERDIR/traefik/data/acme.json
+chmod 600 $DOCKERDIR/traefik/data/acme.json
 
 sudo docker network create \
   --driver=bridge \
