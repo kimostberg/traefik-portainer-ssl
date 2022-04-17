@@ -33,7 +33,7 @@ read -p 'Email: ' email
 read -p 'Domain: ' domain
 read -p 'CloudFlare API KEY: ' cftoken
 sudo apt update
-sudo apt install apache2-utils git wget docker-compose -y
+sudo apt install apache2-utils git wget docker docker-compose -y
 basicauth=$(echo $(htpasswd -nb $uservar $passvar) | sed -e s/\\$/\\$\\$/g)
 
 mkdir -p $DOCKERDIR/traefik-portainer
@@ -71,4 +71,4 @@ sudo docker network create \
   --subnet=172.21.0.0/16 \
   backend
 
-docker-compose up -d -f $DOCKERDIR/traefik-portainer/docker-compose.yml
+docker-compose up -d -f $DOCKERDIR/traefik-portainer/docker-compose.yml 
