@@ -30,7 +30,6 @@ services:
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
       - "traefik.docker.network=frontend"
 
-services:
   traefik:
     image: traefik:latest
     container_name: traefik
