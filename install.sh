@@ -17,7 +17,7 @@ function check_internet() {
 
 check_internet
 
-DOCKERDIR=/docker/container/
+DOCKERDIR=/docker/container
 
 if [ ! -d $DOCKERDIR ]; then
     mkdir -p $DOCKERDIR
@@ -71,4 +71,4 @@ sudo docker network create \
   --subnet=172.21.0.0/16 \
   backend
 
-docker-compose up -d -f $DOCKERDIR/traefik-portainer/docker-compose.yml 
+docker-compose -f $DOCKERDIR/traefik-portainer/docker-compose.yml up -d
