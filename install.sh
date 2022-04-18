@@ -56,9 +56,9 @@ sed -i -e "s/local.example.com/$domain/g" $DOCKERDIR/traefik/data/config.yml
 sed -i -e "s/user@example.com/$email/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
 sed -i -e "s/user@example.com/$email/g" $DOCKERDIR/traefik/data/traefik.yml
 sed -i -e "s/YOU_API_KEY/$cftoken/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
-sed -i -e "s/BASICAUTH/$basicauth/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
-touch $DOCKERDIR/traefik/data/acme.json
-chmod 600 $DOCKERDIR/traefik/data/acme.json
+sudo sed -i -e "s/BASICAUTH/$basicauth/g" $DOCKERDIR/traefik-portainer/docker-compose.yml
+sudo touch $DOCKERDIR/traefik/data/acme.json
+sudo chmod 600 $DOCKERDIR/traefik/data/acme.json
 
 sudo docker network create \
   --driver=bridge \
@@ -71,4 +71,4 @@ sudo docker network create \
   --subnet=172.21.0.0/16 \
   backend
 
-docker-compose -f $DOCKERDIR/traefik-portainer/docker-compose.yml up -d
+sudo docker-compose -f $DOCKERDIR/traefik-portainer/docker-compose.yml up -d
